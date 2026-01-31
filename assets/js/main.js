@@ -105,11 +105,11 @@ function initQuoteWidget() {
 
     function setTripType(type) {
         if (type === 'single') {
-            tabSingle.className = 'flex-1 py-4 font-semibold text-sm transition-colors bg-white text-navy-900 border-b-2 border-yellow-400';
-            tabMulti.className = 'flex-1 py-4 font-semibold text-sm transition-colors bg-gray-100 text-gray-500';
+            tabSingle.className = 'flex-1 py-4 font-bold text-sm transition-colors quote-tab-active';
+            tabMulti.className = 'flex-1 py-4 font-bold text-sm transition-colors quote-tab-inactive';
         } else {
-            tabSingle.className = 'flex-1 py-4 font-semibold text-sm transition-colors bg-gray-100 text-gray-500';
-            tabMulti.className = 'flex-1 py-4 font-semibold text-sm transition-colors bg-yellow-400 text-navy-900';
+            tabSingle.className = 'flex-1 py-4 font-bold text-sm transition-colors quote-tab-inactive';
+            tabMulti.className = 'flex-1 py-4 font-bold text-sm transition-colors quote-tab-active';
         }
         sessionStorage.setItem('tripType', type);
     }
