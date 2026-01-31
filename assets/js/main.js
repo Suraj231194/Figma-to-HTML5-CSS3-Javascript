@@ -46,6 +46,7 @@ function initMobileMenu() {
 function initMegaMenu() {
     // Mega Menu Toggle Logic
     const triggers = document.querySelectorAll('[data-menu-trigger]');
+    const header = document.getElementById('main-header');
 
     triggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
@@ -63,12 +64,22 @@ function initMegaMenu() {
                 const isHidden = target.classList.contains('hidden');
                 if (isHidden) {
                     target.classList.remove('hidden');
+                    // Header Becomes Dark
+                    if (header) {
+                        header.classList.remove('header-transparent', 'text-navy-900');
+                        header.classList.add('bg-[#1F2937]', 'text-white');
+                    }
                     // Add active state to button
                     trigger.classList.add('text-gray-200');
                     const chevron = trigger.querySelector('.chevron');
                     if (chevron) chevron.classList.add('rotate-180');
                 } else {
                     target.classList.add('hidden');
+                    // Header Reverts
+                    if (header) {
+                        header.classList.add('header-transparent', 'text-navy-900');
+                        header.classList.remove('bg-[#1F2937]', 'text-white');
+                    }
                     trigger.classList.remove('text-gray-200');
                     const chevron = trigger.querySelector('.chevron');
                     if (chevron) chevron.classList.remove('rotate-180');
@@ -79,9 +90,15 @@ function initMegaMenu() {
 
     // Close when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('#mega-menu-insurance') && !e.target.closest('[data-menu-trigger]')) {
+        if (!e.target.closest('#mega-menu-insurance') && !e.target.closest('[data-menu-trigger]') && !e.target.closest('#main-header')) {
             document.querySelectorAll('.mega-menu').forEach(m => m.classList.add('hidden'));
             document.querySelectorAll('[data-menu-trigger] .chevron').forEach(c => c.classList.remove('rotate-180'));
+
+            // Revert Header
+            if (header) {
+                header.classList.add('header-transparent', 'text-navy-900');
+                header.classList.remove('bg-[#1F2937]', 'text-white');
+            }
         }
     });
 }

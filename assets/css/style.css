@@ -36,6 +36,18 @@ h6 {
     animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Header Transitions */
+.header-transparent {
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-scrolled {
+    background-color: #1F2937;
+    /* Gray-900/Navy */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
 /* Quote Widget Custom Styles */
 .quote-tab-active {
     background-color: #FDB813 !important;
@@ -46,8 +58,6 @@ h6 {
 }
 
 .quote-tab-inactive {
-    background-color: #f3f4f6 !important;
-    /* Gray-100 */
-    color: #6b7280 !important;
-    /* Gray-500 */
+    background-color: #ffffff !important;
+    color: #0f1e40 !important;
 }
