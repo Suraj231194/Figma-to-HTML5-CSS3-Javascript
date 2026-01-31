@@ -44,30 +44,34 @@ function initMobileMenu() {
 }
 
 function initMegaMenu() {
-    // Basic toggle for desktop mega menu if needed
-    // Currently purely CSS hover or click based in HTML implementation recommended for simplicity
+    // Mega Menu Toggle Logic
     const triggers = document.querySelectorAll('[data-menu-trigger]');
 
     triggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const targetId = trigger.getAttribute('data-menu-trigger');
             const target = document.getElementById(targetId);
 
-            // Close others
+            // Close others if any (though we only have one)
             document.querySelectorAll('.mega-menu').forEach(m => {
                 if (m.id !== targetId) m.classList.add('hidden');
             });
 
             if (target) {
-                target.classList.toggle('hidden');
-                trigger.classList.toggle('text-white');
-                trigger.classList.toggle('text-white/90');
-
-                // Rotation logic for chevron
-                const chevron = trigger.querySelector('.chevron');
-                if (chevron) {
-                    chevron.classList.toggle('rotate-180');
+                const isHidden = target.classList.contains('hidden');
+                if (isHidden) {
+                    target.classList.remove('hidden');
+                    // Add active state to button
+                    trigger.classList.add('text-gray-200');
+                    const chevron = trigger.querySelector('.chevron');
+                    if (chevron) chevron.classList.add('rotate-180');
+                } else {
+                    target.classList.add('hidden');
+                    trigger.classList.remove('text-gray-200');
+                    const chevron = trigger.querySelector('.chevron');
+                    if (chevron) chevron.classList.remove('rotate-180');
                 }
             }
         });
@@ -75,7 +79,7 @@ function initMegaMenu() {
 
     // Close when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('nav') && !e.target.closest('.mega-menu')) {
+        if (!e.target.closest('#mega-menu-insurance') && !e.target.closest('[data-menu-trigger]')) {
             document.querySelectorAll('.mega-menu').forEach(m => m.classList.add('hidden'));
             document.querySelectorAll('[data-menu-trigger] .chevron').forEach(c => c.classList.remove('rotate-180'));
         }
