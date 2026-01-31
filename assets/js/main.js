@@ -48,42 +48,80 @@ function initMegaMenu() {
     const triggers = document.querySelectorAll('[data-menu-trigger]');
     const header = document.getElementById('main-header');
 
+    // Function to open menu
+    const openMenu = (trigger, target) => {
+        target.classList.remove('hidden');
+        // Header Becomes Dark
+        if (header) {
+            header.classList.remove('header-transparent');
+            header.classList.add('bg-[#1F2937]', 'shadow-lg'); // Ensure text stays white
+        }
+        // Active State
+        trigger.classList.add('opacity-100');
+        const chevron = trigger.querySelector('.chevron');
+        if (chevron) chevron.classList.add('rotate-180');
+    };
+
+    // Function to close menu
+    const closeMenu = (trigger, target) => {
+        target.classList.add('hidden');
+        // Header Reverts
+        if (header) {
+            header.classList.add('header-transparent');
+            header.classList.remove('bg-[#1F2937]', 'shadow-lg');
+        }
+        trigger.classList.remove('opacity-100');
+        const chevron = trigger.querySelector('.chevron');
+        if (chevron) chevron.classList.remove('rotate-180');
+    }
+
     triggers.forEach(trigger => {
+        const targetId = trigger.getAttribute('data-menu-trigger');
+        const target = document.getElementById(targetId);
+
+        if (!target) return;
+
+        // CLICK (Mobile & Desktop fallback)
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const targetId = trigger.getAttribute('data-menu-trigger');
-            const target = document.getElementById(targetId);
+            if (target.classList.contains('hidden')) {
+                openMenu(trigger, target);
+            } else {
+                closeMenu(trigger, target);
+            }
+        });
 
-            // Close others if any (though we only have one)
-            document.querySelectorAll('.mega-menu').forEach(m => {
-                if (m.id !== targetId) m.classList.add('hidden');
-            });
+        // HOVER (Desktop only)
+        // We use a timeout to prevent flickering
+        let timeout;
 
-            if (target) {
-                const isHidden = target.classList.contains('hidden');
-                if (isHidden) {
-                    target.classList.remove('hidden');
-                    // Header Becomes Dark
-                    if (header) {
-                        header.classList.remove('header-transparent', 'text-navy-900');
-                        header.classList.add('bg-[#1F2937]', 'text-white');
-                    }
-                    // Add active state to button
-                    trigger.classList.add('text-gray-200');
-                    const chevron = trigger.querySelector('.chevron');
-                    if (chevron) chevron.classList.add('rotate-180');
-                } else {
-                    target.classList.add('hidden');
-                    // Header Reverts
-                    if (header) {
-                        header.classList.add('header-transparent', 'text-navy-900');
-                        header.classList.remove('bg-[#1F2937]', 'text-white');
-                    }
-                    trigger.classList.remove('text-gray-200');
-                    const chevron = trigger.querySelector('.chevron');
-                    if (chevron) chevron.classList.remove('rotate-180');
-                }
+        trigger.parentElement.addEventListener('mouseenter', () => {
+            if (window.innerWidth >= 768) {
+                clearTimeout(timeout);
+                openMenu(trigger, target);
+            }
+        });
+
+        trigger.parentElement.addEventListener('mouseleave', () => {
+            if (window.innerWidth >= 768) {
+                timeout = setTimeout(() => {
+                    closeMenu(trigger, target);
+                }, 100);
+            }
+        });
+
+        target.addEventListener('mouseenter', () => {
+            if (window.innerWidth >= 768) {
+                clearTimeout(timeout);
+            }
+        });
+
+        target.addEventListener('mouseleave', () => {
+            if (window.innerWidth >= 768) {
+                timeout = setTimeout(() => {
+                    closeMenu(trigger, target);
+                }, 100);
             }
         });
     });
@@ -96,8 +134,8 @@ function initMegaMenu() {
 
             // Revert Header
             if (header) {
-                header.classList.add('header-transparent', 'text-navy-900');
-                header.classList.remove('bg-[#1F2937]', 'text-white');
+                header.classList.add('header-transparent');
+                header.classList.remove('bg-[#1F2937]', 'shadow-lg');
             }
         }
     });
