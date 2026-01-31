@@ -1,0 +1,11 @@
+{
+  "name": "static-travel-insurance",
+  "version": "1.0.0",
+  "description": "Pure HTML/JS Travel Insurance Application",
+  "scripts": {
+    "start": "npx http-server . -p 8080 -o"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

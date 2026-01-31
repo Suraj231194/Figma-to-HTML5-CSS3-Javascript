@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Travel Insurance</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Saira:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0f1e40',
+                            800: '#1a2b55',
+                        },
+                        yellow: {
+                            400: '#fcb900',
+                            500: '#e5a800',
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f4f5f7',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Saira', 'sans-serif'],
+                    },
+                    maxWidth: {
+                        'container': '1320px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="font-sans text-gray-900 bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <header class="bg-navy-900 text-white h-[80px] relative z-50">
+        <div class="container-custom h-full flex items-center justify-between">
+            <a href="index.html"
+                class="flex items-center gap-2 font-heading font-bold text-xl cursor-pointer text-white no-underline">
+                <span
+                    class="bg-white text-navy-900 w-6 h-6 rounded-full flex items-center justify-center text-xs">V</span>
+                <span>logoipsum</span>
+            </a>
+            <div class="hidden md:block">
+                <span class="text-sm font-medium opacity-80">Secure Payment</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex items-center justify-center">
+        <div class="text-center p-6">
+            <h1 class="text-3xl font-bold text-navy-900 mb-4 font-heading">Payment Page</h1>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">This is where the payment flow would continue. The plan
+                selected has been saved.</p>
+            <a href="index.html"
+                class="inline-block px-6 py-3 bg-yellow-400 text-navy-900 font-bold rounded hover:bg-yellow-500 transition-colors uppercase">
+                Back to Home
+            </a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #0f1e40; color: white; padding: 20px 0; margin-top: auto;">
+        <div class="container-custom"
+            style="display: flex; justify-content: space-between; font-size: 13px; opacity: 0.8;">
+            <p>© 2025 Logo Ipsum. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

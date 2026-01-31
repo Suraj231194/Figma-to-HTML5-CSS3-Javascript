@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Results | Travel Insurance</title>
+    <meta name="description" content="View your travel insurance quote results and choose the best plan for your trip.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Saira:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0f1e40',
+                            800: '#1a2b55',
+                        },
+                        yellow: {
+                            400: '#fcb900',
+                            500: '#e5a800',
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f4f5f7',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Saira', 'sans-serif'],
+                    },
+                    maxWidth: {
+                        'container': '1320px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .step-active .step-circle {
+            border-color: #0f1e40;
+            background-color: #0f1e40;
+            color: white;
+        }
+
+        .step-current .step-circle {
+            border-color: #60a5fa;
+            color: #60a5fa;
+            background-color: white;
+        }
+
+        .step-pending .step-circle {
+            border-color: #d1d5db;
+            background-color: white;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-900 bg-white flex flex-col min-h-screen">
+
+    <!-- HEADER (Mobile Override included) -->
+    <div class="md:hidden bg-navy-900 text-white p-4 flex items-center gap-2">
+        <a href="index.html" class="flex items-center gap-1 text-sm font-medium text-white no-underline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back
+        </a>
+    </div>
+
+    <header class="hidden md:block bg-navy-900 text-white h-[80px] relative z-50">
+        <div class="container-custom h-full flex items-center justify-between">
+            <div class="flex items-center gap-2 font-heading font-bold text-xl cursor-pointer"
+                onclick="window.location.href='index.html'">
+                <span
+                    class="bg-white text-navy-900 w-6 h-6 rounded-full flex items-center justify-center text-xs">V</span>
+                <span>logoipsum</span>
+            </div>
+            <!-- Simple Nav for Quote Page -->
+            <nav>
+                <ul class="flex items-center gap-8">
+                    <li><a href="#" class="text-sm font-medium text-white/90 hover:text-white">Emergency Assistance</a>
+                    </li>
+                    <li><a href="#" class="text-sm font-medium text-white/90 hover:text-white">Customer Service</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- STEPPER -->
+    <div class="py-6 border-b border-gray-100">
+        <div class="container-custom flex items-center justify-center max-w-[800px]">
+            <!-- Step 1: Quote (Done) -->
+            <div class="flex flex-col items-center gap-2 relative z-10 step-active">
+                <div class="step-circle w-6 h-6 rounded-full border flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <span class="text-[11px] uppercase font-medium text-gray-600 hidden md:inline">Get Quote</span>
+                <span class="text-[9px] uppercase font-medium text-gray-600 md:hidden">Quote</span>
+            </div>
+
+            <div class="flex-1 h-[2px] bg-navy-900 mx-2 -mt-5"></div>
+
+            <!-- Step 2: Plan (Current) -->
+            <div class="flex flex-col items-center gap-2 relative z-10 step-current">
+                <div class="step-circle w-6 h-6 rounded-full border-2 flex items-center justify-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 2L11 13"></path>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </div>
+                <span class="text-[11px] uppercase font-medium text-gray-600 hidden md:inline">Plan Option</span>
+                <span class="text-[9px] uppercase font-medium text-gray-600 md:hidden">Plan</span>
+            </div>
+
+            <div class="flex-1 h-[2px] bg-gray-200 mx-2 -mt-5"></div>
+
+            <!-- Step 3: Travellers -->
+            <div class="flex flex-col items-center gap-2 relative z-10 step-pending">
+                <div class="step-circle w-6 h-6 rounded-full border-2 border-gray-300"></div>
+                <span class="text-[11px] uppercase font-medium text-gray-600 hidden md:inline">Travellers</span>
+                <span class="text-[9px] uppercase font-medium text-gray-600 md:hidden">Travellers</span>
+            </div>
+
+            <div class="flex-1 h-[2px] bg-gray-200 mx-2 -mt-5"></div>
+
+            <!-- Step 4: Payment -->
+            <div class="flex flex-col items-center gap-2 relative z-10 step-pending">
+                <div class="step-circle w-6 h-6 rounded-full border-2 border-gray-300"></div>
+                <span class="text-[11px] uppercase font-medium text-gray-600 hidden md:inline">Payment</span>
+                <span class="text-[9px] uppercase font-medium text-gray-600 md:hidden">Payment</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 pb-20">
+
+        <!-- Summary (Desktop) -->
+        <div class="hidden md:block py-6 border-b border-gray-50">
+            <div class="container-custom flex items-center justify-center gap-16 text-sm text-gray-800">
+                <div id="summary-dest"><strong>Destination(s):</strong> <span class="dest-val">...</span></div>
+                <div id="summary-dates"><strong>Dates:</strong> <span class="dates-val">...</span></div>
+                <div id="summary-ages"><strong>Traveller Ages:</strong> <span class="ages-val">...</span></div>
+                <a href="index.html"
+                    class="border border-gray-300 px-3 py-1 text-xs rounded hover:border-gray-400 no-underline text-gray-800">Edit</a>
+            </div>
+        </div>
+
+        <!-- MOBILE VIEW -->
+        <div class="md:hidden px-4 py-6 space-y-6">
+            <!-- Trip Details -->
+            <div class="bg-white rounded p-0">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-navy-900 font-bold text-lg">Trip Details</h2>
+                    <a href="index.html"
+                        class="text-xs border border-gray-300 rounded px-2 py-1 text-gray-500 no-underline">Edit</a>
+                </div>
+                <div class="space-y-3 text-sm text-gray-800">
+                    <div>
+                        <div class="font-bold">Destination(s):</div>
+                        <div class="text-gray-600 dest-val">...</div>
+                    </div>
+                    <div>
+                        <div class="font-bold">Dates:</div>
+                        <div class="text-gray-600 dates-val">...</div>
+                    </div>
+                    <div>
+                        <div class="font-bold">Traveller Ages:</div>
+                        <div class="text-gray-600 ages-val">...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Plan Selector -->
+            <div class="border border-gray-200 rounded overflow-hidden">
+                <div class="flex items-center justify-between p-4 cursor-pointer bg-gray-50" id="mobile-plan-basic"
+                    onclick="selectMobilePlan('basic')">
+                    <span class="font-bold text-navy-900 uppercase">VOYAGER</span>
+                    <span class="font-bold text-navy-900">$15.98</span>
+                </div>
+                <div class="h-[1px] bg-gray-100"></div>
+                <div class="flex items-center justify-between p-4 cursor-pointer bg-white" id="mobile-plan-plus"
+                    onclick="selectMobilePlan('plus')">
+                    <span class="font-bold text-gray-500 uppercase">VOYAGER PLUS</span>
+                    <span class="font-bold text-yellow-400">$41.34</span>
+                </div>
+            </div>
+
+            <!-- Mobile Selected Plan Card -->
+            <div class="border border-gray-200 rounded p-6 text-center shadow-sm" id="mobile-plan-card">
+                <div id="mobile-plan-icon"
+                    class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold font-heading bg-navy-900">
+                    D</div>
+
+                <h3 id="mobile-plan-name" class="text-xl font-bold text-navy-900 uppercase mb-2">VOYAGER</h3>
+                <div id="mobile-plan-from" class="text-gray-400 text-sm mb-1">From $17.37</div>
+                <div id="mobile-plan-price" class="text-3xl font-bold text-navy-900 mb-1">$15.98</div>
+                <div class="text-xs text-gray-400 uppercase mb-6">Total Cost</div>
+
+                <div class="text-[10px] text-gray-400 mb-6 font-normal">Policy benefits listed below, per traveller
+                    limits apply</div>
+
+                <div class="border-t border-gray-100 text-left">
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100"><span
+                            class="text-xs text-gray-600 w-1/2">Cancellation</span> <span id="mob-ben-cancel"
+                            class="text-sm font-bold text-navy-900">$1,000</span></div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100"><span
+                            class="text-xs text-gray-600 w-1/2">Luggage</span> <span id="mob-ben-luggage"
+                            class="text-sm font-bold text-navy-900">$500</span></div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100"><span
+                            class="text-xs text-gray-600 w-1/2">Travel Delay</span> <span id="mob-ben-delay"
+                            class="text-sm font-bold text-navy-900">Not available</span></div>
+                    <div class="flex items-center justify-between py-3 border-b border-gray-100"><span
+                            class="text-xs text-gray-600 w-1/2">Liability</span> <span id="mob-ben-liability"
+                            class="text-sm font-bold text-navy-900">Not available</span></div>
+                </div>
+
+                <div class="mt-8">
+                    <button onclick="window.location.href='payment.html'" id="mobile-choose-btn"
+                        class="w-full py-3 text-white font-bold rounded uppercase bg-navy-900">CHOOSE PLAN</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESKTOP VIEW -->
+        <div class="hidden md:block max-w-[1320px] mx-auto px-5 mt-10">
+            <div class="grid grid-cols-[350px_1fr_1fr] border border-gray-200">
+
+                <!-- Voyager Column -->
+                <div class="col-start-2 bg-gray-100 p-10 text-center border-l border-white">
+                    <div
+                        class="w-12 h-12 bg-navy-900 text-white rounded-full mx-auto mb-4 flex items-center justify-center font-bold text-xl">
+                        D</div>
+                    <h3 class="text-xl font-bold uppercase text-navy-900 mb-3 font-heading">VOYAGER</h3>
+                    <div class="mb-4">
+                        <span class="block text-[13px] text-gray-400">From $17.37</span>
+                        <div class="text-[32px] font-bold text-navy-900">$15<small className="text-xl">.98</small></div>
+                        <span class="block text-[11px] text-gray-400 uppercase mt-1">Total Cost</span>
+                    </div>
+                </div>
+
+                <!-- Voyager Plus Column -->
+                <div class="col-start-3 bg-white p-10 text-center border-l border-gray-200 relative z-10 shadow-sm">
+                    <div
+                        class="w-12 h-12 bg-yellow-400 text-white rounded-full mx-auto mb-4 flex items-center justify-center font-bold text-xl">
+                        D</div>
+                    <h3 class="text-xl font-bold uppercase text-navy-900 mb-3 font-heading">VOYAGER PLUS</h3>
+                    <div class="mb-4">
+                        <span class="block text-[13px] text-gray-400">From $44.94</span>
+                        <div class="text-[32px] font-bold text-yellow-400">$41<small className="text-xl">.34</small>
+                        </div>
+                        <span class="block text-[11px] text-gray-400 uppercase mt-1">Total Cost</span>
+                    </div>
+                </div>
+
+                <!-- Row 1 -->
+                <div class="p-6 border-t border-gray-100 flex items-center gap-2 text-sm font-medium text-gray-800">
+                    Cancellation/Interruption</div>
+                <div
+                    class="p-6 border-t border-gray-100 border-l border-white bg-gray-100 text-center text-sm font-bold text-navy-900">
+                    $1,000</div>
+                <div
+                    class="p-6 border-t border-gray-200 border-l border-gray-200 bg-white text-center text-sm font-bold text-navy-900">
+                    $4,000</div>
+
+                <!-- Row 2 -->
+                <div class="p-6 border-t border-gray-100 flex items-center gap-2 text-sm font-medium text-gray-800">
+                    Luggage/Effects</div>
+                <div
+                    class="p-6 border-t border-gray-100 border-l border-white bg-gray-100 text-center text-sm font-bold text-navy-900">
+                    $500</div>
+                <div
+                    class="p-6 border-t border-gray-200 border-l border-gray-200 bg-white text-center text-sm font-bold text-navy-900">
+                    $1,000</div>
+
+                <!-- Buttons -->
+                <div class="col-span-3 grid grid-cols-[350px_1fr_1fr]">
+                    <div></div>
+                    <div class="p-10 bg-gray-100 border-l border-white text-center">
+                        <button onclick="window.location.href='payment.html'"
+                            class="w-full py-3 bg-navy-900 text-white font-bold rounded uppercase hover:bg-navy-800">CHOOSE
+                            PLAN</button>
+                    </div>
+                    <div class="p-10 bg-white border-l border-gray-200 text-center">
+                        <button onclick="window.location.href='payment.html'"
+                            class="w-full py-3 bg-yellow-400 text-white font-bold rounded uppercase hover:bg-yellow-500">CHOOSE
+                            PLAN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background-color: #0f1e40; color: white; padding: 20px 0; margin-top: auto;">
+        <div class="container-custom"
+            style="display: flex; justify-content: space-between; font-size: 13px; opacity: 0.8;">
+            <p>© 2025 Logo Ipsum. All Rights Reserved.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" class="text-white hover:underline">Privacy Policy</a>
+                <a href="#" class="text-white hover:underline">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
