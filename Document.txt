@@ -1,1 +1,70 @@
 
+Non-Logged User Capabilities (Guest Users)
+
+1. Browse Products
+	•	View basic product information.
+	•	See MRP (Maximum Retail Price) only.
+	•	Cannot see customer-specific or discounted pricing.  ￼
+
+⸻
+
+2. Generate Quotation / Proforma Invoice (PI)
+	•	Guests can generate quotations directly from the website.
+	•	Can create Proforma Invoices (PI).
+	•	PI can be generated:
+	•	In their own name
+	•	In any custom recipient name
+	•	PI can be downloaded as a branded PDF.  ￼
+
+⸻
+
+3. Use AI Chatbot
+
+Guest users can interact with the 24×7 AI chatbot to:
+	•	Ask product questions
+	•	Get help navigating the website
+	•	Get FAQ answers
+	•	Create support requests.  ￼
+
+⸻
+
+4. Create Support Tickets
+	•	Can contact support.
+	•	System will send:
+	•	Auto-reply email
+	•	Ticket number
+	•	Expected response timeline.  ￼
+
+⸻
+
+5. Explore Website Content
+
+Guests can access public pages like:
+	•	Home page
+	•	About Us
+	•	Product categories
+	•	Contact page
+	•	Newsletter signup
+	•	Meeting booking forms
+	•	Product videos and information.  ￼
+
+⸻
+
+6. Use Lead Generation Features
+
+Guest users can:
+	•	Book meetings
+	•	Fill inquiry forms
+	•	Subscribe to newsletters
+	•	Answer product recommendation quizzes.  ￼
+
+⸻
+
+Things Guest Users Cannot Do
+
+They must log in to:
+	•	See customer-specific pricing
+	•	Place direct product orders
+	•	Access order tracking
+	•	View dynamic quantity discounts
+	•	Get personalized dashboard features.
